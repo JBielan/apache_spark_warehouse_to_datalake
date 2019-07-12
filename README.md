@@ -38,5 +38,47 @@ As easy as 1 line in command line set to project directory:
 ```python
 python etl.py
 ```
+
+#### Example Queries
+In the end of ETL process some examples of queries run to show possible usecases. 
+
+- Get users and songs they listened at particular time. Limit query to 1000 hits:
+```sql
+SELECT  sp.songplay_id,
+        u.user_id,
+        s.song_id,
+        u.last_name,
+        sp.start_time,
+        a.name,
+        s.title
+FROM songplays AS sp
+        JOIN users   AS u ON (u.user_id = sp.user_id)
+        JOIN songs   AS s ON (s.song_id = sp.song_id)
+        JOIN artists AS a ON (a.artist_id = sp.artist_id)
+        JOIN time    AS t ON (t.start_time = sp.start_time)
+ORDER BY (sp.start_time)
+LIMIT 1000;
+```
+
+- Get count of rows in each Dimension table:
+```sql
+SELECT COUNT(*)
+FROM songs_table;
+
+SELECT COUNT(*)
+FROM artists_table;
+
+SELECT COUNT(*)
+FROM users_table;
+
+SELECT COUNT(*)
+FROM time_table;
+```
+
+- Get count of rows in Fact table:
+```sql
+SELECT COUNT(*)
+FROM songplays_table;
+```
     
   
