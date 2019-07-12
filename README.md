@@ -23,7 +23,7 @@ Their data resides in S3, in a directory of JSON logs on user activity on the ap
 
 #### Database Schema
 The database has "star schema". It has 1 facts table and 4 dimensional tables. Diagram below represents the structure:
-****DB graph
+![schema](https://github.com/JBielan/apache_spark_warehouse_to_datalake/blob/master/database_schema.png?raw=true)
 
 #### Raw JSON files structure
 - **log_data**: log_data contains data about what users have done (columns: event_id, artist, auth, firstName, gender, itemInSession, lastName, length, level, location, method, page, registration, sessionId, song, status, ts, userAgent, userId)
